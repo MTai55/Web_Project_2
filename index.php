@@ -1,8 +1,9 @@
 <?php 
-    // session_start();
+    session_start();
 
-    // if(isset($_SESSION["username"])) {
-    //     $username = $_SESSION["username"];
+    // if(isset($_SESSION["admin"])) {
+    //     header("Location: index.php?controller=Admin&action=homepageadmin");
+    //     echo "13532 ";
     // }
     require "./Core/Database.php";
     require "./Models/BaseModel.php";
@@ -15,8 +16,9 @@
     $controllerObject = new $controllerName;
     $action = $_GET["action"] ?? "index";
     $controllerObject->$action();
-
-    include "./Views/partitions/fontend/footer.php";
+    if(!$_GET["controller"]=='admin'){
+        include "./Views/partitions/fontend/footer.php";
+    }
 ?>
 
 
